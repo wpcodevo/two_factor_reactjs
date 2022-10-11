@@ -1,5 +1,5 @@
-import create from 'zustand';
-import { IUser } from '../api/types';
+import create from "zustand";
+import { IUser } from "../api/types";
 
 type Store = {
   authUser: IUser | null;

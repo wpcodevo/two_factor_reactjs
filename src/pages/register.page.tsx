@@ -1,4 +1,4 @@
-import { object, string, TypeOf, z } from "zod";
+import { object, string, TypeOf } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, FormProvider, SubmitHandler } from "react-hook-form";
 import { useEffect } from "react";
@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { authApi } from "../api/authApi";
 import useStore from "../store";
-import { GenericResponse, IUser } from "../api/types";
+import { GenericResponse } from "../api/types";
 
 const registerSchema = object({
   name: string().min(1, "Full name is required").max(100),

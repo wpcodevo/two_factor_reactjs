@@ -1,13 +1,12 @@
 import { object, string, TypeOf } from "zod";
 import { useEffect } from "react";
-import { useForm, FormProvider, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoadingButton } from "../components/LoadingButton";
 import { toast } from "react-toastify";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useStore from "../store";
 import { authApi } from "../api/authApi";
-import { ILoginResponse } from "../api/types";
 
 const styles = {
   inputField: `form-control block w-full px-4 py-4 text-sm text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none`,
@@ -21,7 +20,6 @@ export type Validate2faInput = TypeOf<typeof validate2faSchema>;
 
 const Validate2faPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const store = useStore();
 
   const {

@@ -1,8 +1,6 @@
-import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import useStore from "../store";
 import Spinner from "./Spinner";
-import { logoutUserFn } from "../api/authApi";
 
 const Header = () => {
   const store = useStore();
