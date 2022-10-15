@@ -64,6 +64,7 @@ const TwoFactorAuth: FC<TwoFactorAuthProps> = ({
       );
       store.setRequestLoading(false);
       store.setAuthUser(user);
+      closeModal();
       toast.success("Two-Factor Auth Enabled Successfully", {
         position: "top-right",
       });
@@ -73,6 +74,7 @@ const TwoFactorAuth: FC<TwoFactorAuthProps> = ({
         (error.response &&
           error.response.data &&
           error.response.data.message) ||
+        error.response.data.detail ||
         error.message ||
         error.toString();
       toast.error(resMessage, {
@@ -82,7 +84,6 @@ const TwoFactorAuth: FC<TwoFactorAuthProps> = ({
   };
 
   const onSubmitHandler: SubmitHandler<TwoFactorAuthInput> = (values) => {
-    closeModal();
     verifyOtp(values.token);
   };
 

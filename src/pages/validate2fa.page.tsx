@@ -52,6 +52,7 @@ const Validate2faPage = () => {
         (error.response &&
           error.response.data &&
           error.response.data.message) ||
+        error.response.data.detail ||
         error.message ||
         error.toString();
       toast.error(resMessage, {
