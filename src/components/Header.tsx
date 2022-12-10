@@ -6,7 +6,9 @@ const Header = () => {
   const store = useStore();
   const user = store.authUser;
 
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    window.location.reload();
+  };
 
   return (
     <>

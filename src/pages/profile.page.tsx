@@ -16,13 +16,19 @@ const ProfilePage = () => {
   const store = useStore();
   const user = store.authUser;
 
-  const generateQrCode = async (user_id: string) => {
+  const generateQrCode = async ({
+    user_id,
+    email,
+  }: {
+    user_id: string;
+    email: string;
+  }) => {
     try {
       store.setRequestLoading(true);
       const response = await authApi.post<{
         otpauth_url: string;
         base32: string;
-      }>("/auth/otp/generate", { user_id });
+      }>("/auth/otp/generate", { user_id, email });
       store.setRequestLoading(false);
 
       if (response.status === 200) {
@@ -117,7 +123,9 @@ const ProfilePage = () => {
               <button
                 type="button"
                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none"
-                onClick={() => generateQrCode(user?.id!)}
+                onClick={() =>
+                  generateQrCode({ user_id: user?.id!, email: user?.email! })
+                }
               >
                 Setup 2FA
               </button>
